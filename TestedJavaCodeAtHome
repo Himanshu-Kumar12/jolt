@@ -1,0 +1,19 @@
+Object inputJsonObj =variables;
+        JsonNode inputJsonNode;
+        if (inputJsonObj instanceof String) {
+            String inputJson = (String) inputJsonObj;
+            inputJsonNode = mapper.readTree(inputJson.replaceAll("\\\\\"", "\"")); // Remove extra escape characters for quotes
+        }else if (inputJsonObj instanceof Map) {
+            inputJsonNode = mapper.valueToTree(inputJsonObj);
+        } else {
+        throw new IllegalArgumentException("inputJson must be a String or Map, but got: " + inputJsonObj.getClass());
+        }
+ List<Object> joltSpec = (List<Object>) variables.get("joltSpec");
+        Chainr chainr = Chainr.fromSpec(joltSpec);
+        Map<String, Object> inputMap = mapper.treeToValue(inputJsonNode, Map.class);
+        Object transformedOutput = chainr.transform(inputMap);
+        JsonNode transformedJsonNode = mapper.valueToTree(transformedOutput);
+        client.newCompleteCommand(job.getKey())
+                .variables(Map.of("outputJson", transformedJsonNode))
+                .send()
+                .join();
