@@ -1,0 +1,107 @@
+import com.bazaarvoice.jolt.Chainr;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.camunda.zeebe.client.ZeebeClient;
+import io.camunda.zeebe.client.api.worker.JobClient;
+import io.camunda.zeebe.client.api.worker.JobWorker;
+import io.camunda.zeebe.client.api.worker.JobHandler;
+import io.camunda.zeebe.client.api.response.ActivatedJob;
+
+class JoltJobWorker {
+psvm(){
+ZeebeClient client = ZeebeClient.newClientBuilder()
+                .gatewayAddress("127.0.0.1:26500")
+                .usePlaintext()
+                .build();
+JobWorker worker = client.newWorker()
+                .jobType("jolt-transform")  // BPMN service task type
+                .handler(new JoltHandler())
+                .open();
+}
+static class JoltHandler implements JobHandler {
+        private final ObjectMapper mapper = new ObjectMapper();
+
+        @Override
+        public void handle(JobClient client, ActivatedJob job) throws Exception {
+            Map<String, Object> variables = job.getVariablesAsMap();
+
+            // Get and safely convert the inputJson variable
+            Object inputJsonObj = variables.get("inputJson");
+            String inputJson;
+if (inputJsonObj instanceof String) {
+                inputJson = (String) inputJsonObj;
+            } else if (inputJsonObj instanceof Map) {
+                inputJson = mapper.writeValueAsString(inputJsonObj);
+            } else {
+                throw new IllegalArgumentException("inputJson must be a String or Map, but got: " + inputJsonObj.getClass());
+            }
+
+            // Parse input into a Map for JOLT
+            Map<String, Object> inputMap = mapper.readValue(inputJson, Map.class);
+
+            // Get the JOLT spec (already deserialized)
+            List<Object> joltSpec = (List<Object>) variables.get("joltSpec");
+
+            // Apply JOLT transformation
+            Chainr chainr = Chainr.fromSpec(joltSpec);
+            Object transformedOutput = chainr.transform(inputMap);
+            client.newCompleteCommand(job.getKey())
+                    .variables(Map.of("outputJson", mapper.writeValueAsString(transformedOutput)))
+                    .send()
+                    .join();
+        }
+    }
+}
+
+
+
+pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jolttesting</groupId>
+    <artifactId>joltconnectortesting</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.bazaarvoice.jolt</groupId>
+            <artifactId>jolt-core</artifactId>
+            <version>0.1.9-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.18.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.camunda</groupId>
+            <artifactId>zeebe-client-java</artifactId>
+            <version>8.5.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bazaarvoice.jolt</groupId>
+            <artifactId>jolt-core</artifactId>
+            <version>0.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
+
