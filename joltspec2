@@ -1,0 +1,63 @@
+[
+  {
+    // Step 1: Extract data and group by profile name (highCosProfile, etc.)
+    // Map fields (id->name, unit->valueType) and place profile name into 'metricName'
+    "operation": "shift",
+    "spec": {
+      "event": {
+        "serviceTest": {
+          "serviceTestResults": {
+            "*": { // Index in serviceTestResults array (usually 0)
+              "testMeasure": {
+                "*": { // Index in testMeasure array (usually 0)
+                  // Iterate over profile names (highCosProfile, mediumCosProfile, lowCosProfile)
+                  "*": { // This '*' matches the profile name (e.g., "highCosProfile"). Capture with '$'.
+                    "$": "intermediate.testMeasure.&.metricName",
+                    "result": {
+                      //"@": "event.testMeasure[#3].value[0].value",
+                      //"$": "event.testMeasure[#3].value[0].name",
+                      "#string": "intermediate.testMeasure[#2].value[1].valueType"
+                    },
+                    "measurements": {
+                      // Iterate over the measurements array within the profile
+                      "*": { // Index within the measurements array
+                        // Map input fields to output fields, using the profile name (&3)
+                        // and measurement index (&1) to structure the output value array.
+                        "\\@type": "intermediate.testMeasure.&3.value[&1].\\@type", // &3 is the profile name, &1 is the measurement index
+                        "id": "intermediate.testMeasure.&3.value[&1].name", // Map id to name
+                        "value": "intermediate.testMeasure.&3.value[&1].value",
+                        "unit": "intermediate.testMeasure.&3.value[&1].valueType" // Map unit to valueType
+                          // Place the profile name itself (matched by '*') into the metricName field for this group
+                          // '$' references the key matched by the '*' at this level (the profile name).
+                          //"$": "intermediate.testMeasure.&3.metricName"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    // Step 2: Restructure the intermediate object into the final output array format.
+    // The previous step created an object like: intermediate.testMeasure.highCosProfile = { metricName: "...", value: [...] }
+    // We now want to take the *values* of the 'intermediate.testMeasure' object (which are the profile objects)
+    // and put them into the final 'event.testMeasure' array.
+    "operation": "shift",
+    "spec": {
+      "intermediate": {
+        "testMeasure": {
+          // Iterate over the keys of the testMeasure object (highCosProfile, etc.)
+          "*": {
+            // Take the entire object matched by '*' (the value associated with the profile name key)
+            // and place it into the 'event.testMeasure' array. '[]' denotes appending to an array.
+            "@": "event.testMeasure[]"
+          }
+        }
+      }
+    }
+  }
+]
