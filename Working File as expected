@@ -1,0 +1,109 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "eventId": "eventId",
+      "eventType": "eventType",
+      "eventTime": "eventTime",
+      "description": "notificationType",
+      "eventNote": "eventNote",
+      "event": {
+        "notificationType": "description",
+        "id": "event.id",
+        "status": "event.state",
+        "serviceTest": {
+          "serviceTestResults": {
+            "*": {
+              "result": {
+                "@": "event.characteristic[1].value",
+                "#Test_result": "event.characteristic[1].name",
+                "#string": "event.characteristic[1].valueType"
+              },
+              "type": "event.name",
+              "testMeasure": {
+                "*": {
+                  "*": {
+                    "$": "event.testMeasure1[].metricName",
+                    "result": {
+                      "@": "event.testMeasure[#3].value[0].value",
+                      "$": "event.testMeasure[#3].value[0].name",
+                      "#string": "event.testMeasure[#3].value[0].valueType"
+                    },
+                    "profile": {
+                      "@": "event.testMeasure[#3].value[1].value",
+                      "$": "event.testMeasure[#3].value[1].name",
+                      "#string": "event.testMeasure[#3].value[1].valueType"
+                    },
+                    "*": {
+                      "*": {
+                        "id": "tmpNode.&3[&1].name",
+                        "value": "tmpNode.&3[&1].value",
+                        "\\@type": "tmpNode.&3[&1].\\@type",
+                        "unit": "tmpNode.&3[&1].valueType"
+                      }
+                    }
+                  }
+                }
+              },
+              "errors": {
+                "*": {
+                  "code": {
+                    "#string": "event.characteristic[2].valueType",
+                    "#error_code": "event.characteristic[2].name",
+                    "@": "event.characteristic[2].value"
+                  },
+                  "reason": {
+                    "#string": "event.characteristic[3].valueType",
+                    "#error_reason": "event.characteristic[3].name",
+                    "@": "event.characteristic[3].value"
+                  }
+                }
+              }
+            }
+          },
+          "serviceRef": {
+            "id": "event.relatedService.id",
+            "type": "event.relatedService.\\@type"
+          },
+          "executionDate": {
+            "startDateTime": "event.startDateTime",
+            "endDateTime": "event.endDateTime"
+          }
+        },
+        "externalId": {
+          "#externalId": "event.characteristic[0].name",
+          "@(1,externalId)": "event.characteristic[0].value",
+          "#string": "event.characteristic[0].valueType"
+        }
+      }
+    }
+      },
+  {
+    "operation": "shift",
+    "spec": {
+      "@": "",
+      "event": {
+        "testMeasure1": {
+          "*": {
+            "metricName": {
+              "*": {
+                "$": "event.testMeasure[&3].metricName",
+                "@(5,tmpNode.&)": "event.testMeasure[&3].value"
+              }
+            }
+          }
+        }
+      }
+    }
+      },
+  {
+    "operation": "remove",
+    "spec": {
+      "event": {
+        "testMeasure1": ""
+      },
+      "tmpNode": ""
+    }
+      }
+
+    ]
