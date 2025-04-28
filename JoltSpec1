@@ -1,0 +1,89 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      // Map top-level fields directly
+      "eventId": "eventId",
+      "eventType": "eventType",
+      "eventTime": "eventTime",
+      // Map all fields within eventNote
+      "eventNote": {
+        "*": "eventNote.&"
+      },
+      // Process the 'event' object
+      "event": {
+        "notificationType": "description",
+        // Branch based on the *value* of the 'status' field
+        "status": {
+          "InProgress": { // --- Case 1: status is "InProgress" ---
+            // Go up 2 levels (from value to 'status' key, then to 'event' object)
+            // and reference sibling/child fields relative to 'event'.
+            "@(2,id)": "event.id", // Map event.id
+            "@(2,status)": "event.state", // Map event.status to event.state
+            "@(2,serviceTest.serviceRef.id)": "event.relatedService.id", // Map nested serviceRef id
+            "@(2,serviceTest.serviceRef.type)": "event.relatedService.type", // Map nested serviceRef type
+            "@(2,serviceTest.executionDate.startDateTime)": "event.startDateTime" // Map nested startDateTime
+              // ** Intentionally OMIT endDateTime mapping here **
+          },
+          "Cancelled": { // --- Case 1: status is "InProgress" ---
+            // Go up 2 levels (from value to 'status' key, then to 'event' object)
+            // and reference sibling/child fields relative to 'event'.
+            "@(2,id)": "event.id", // Map event.id
+            "@(2,status)": "event.state", // Map event.status to event.state
+            "@(2,serviceTest.serviceRef.id)": "event.relatedService.id", // Map nested serviceRef id
+            "@(2,serviceTest.serviceRef.type)": "event.relatedService.type", // Map nested serviceRef type
+            "@(2,serviceTest.executionDate.startDateTime)": "event.startDateTime",
+            "@(2,serviceTest.executionDate.endDateTime)": "event.endDateTime"
+              // Map nested startDateTime
+              // ** Intentionally OMIT endDateTime mapping here **
+          },
+          "*": { // --- Case 2: status is anything else (wildcard) ---
+            // Map the same fields as above...
+            "@(2,id)": "event.id",
+            "@(2,status)": "event.state",
+            "@(2,serviceTest.serviceRef.id)": "event.relatedService.id",
+            "@(2,serviceTest.serviceRef.type)": "event.relatedService.type",
+            "@(2,serviceTest.executionDate.startDateTime)": "event.startDateTime",
+            // ** Include endDateTime mapping here **
+            "@(2,serviceTest.executionDate.endDateTime)": "event.endDateTime"
+          }
+        },
+        "externalId": {
+          "@": "event.characteristic[0].value",
+          "#externalId": "event.characteristic[0].name",
+          "#string": "event.characteristic[0].valueType"
+        },
+        "serviceTest": {
+          "serviceTestResults": {
+            "*": { // Assuming the result you want is always in the first item [0]
+              "result": {
+                "@": "event.characteristic[1].value",
+                "#Test_result": "event.characteristic[1].name",
+                "#string": "event.characteristic[1].valueType"
+              },
+              "type": "event.name",
+              "testMeasure": {
+                "*": { // Targeting the first element of testMeasure array
+                  "*": { // Match keys ending in "CosProfile" (high, medium, low)
+                    "$": "event.testMeasure[].metricName",
+                    "result": {
+                      "@": "event.testMeasure[#3].value[0].value",
+                      "$": "event.testMeasure[#3].value[0].name",
+                      "#string": "event.testMeasure[#3].value[0].valueType"
+                    },
+                    "profile": {
+                      "@": "event.testMeasure[#3].value[1].value",
+                      "$": "event.testMeasure[#3].value[1].name",
+                      "#string": "event.testMeasure[#3].value[1].valueType"
+                    }
+                    // Get the matched key name ($) and map it to event.testMeasure[].metricName. [] creates an array and appends elements.
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]
