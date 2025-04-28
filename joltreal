@@ -94,10 +94,13 @@ pom.xml
             <artifactId>logback-classic</artifactId>
             <version>1.4.12</version>
         </dependency>
+
+//only add this
+
         <dependency>
             <groupId>com.bazaarvoice.jolt</groupId>
             <artifactId>jolt-core</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.6</version>
             <scope>compile</scope>
         </dependency>
 
