@@ -1,0 +1,1103 @@
+
+BTD Status
+{
+    "eventId": "288b735b-c3da-4c66-9b83-78c2c5444e1d",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T05:25:05Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+    "event": {
+        "id": "WRI600000002601",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "Completed",
+        "notificationType": "TestCompleted",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035663",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000001011",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-08T05:24:55Z",
+                "endDateTime": "2021-09-08T05:25:05Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "BTD Status",
+                    "status": "Completed",
+                    "result": "Passed",
+                    "testMeasure": [
+                        {
+                            "btd": {
+                                "measurements": [
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Operational State",
+                                        "value": "Up"
+                                    },
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Last Change Time",
+                                        "value": "26 days, 00:21:12.00 (hr:min:sec)"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+
+op/
+{
+	"eventId": "288b735b-c3da-4c66-9b83-78c2c5444e1d",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T05:25:05Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+	"event": {
+		"id": "WRI600000002601",
+		"state": "Completed",
+		"name":"BTD Status",
+		"relatedService": {
+				"id": "OVC000000035663",
+				"@type": "OVC"
+			},
+		"startDateTime": "2021-09-08T05:24:55Z",
+        "endDateTime": "2021-09-08T05:25:05Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "ABC-123",
+		 "valueType": "string"
+		},
+		{
+		 "name": "Test_result",
+		 "value": "Passed",
+		 "valueType": "string"
+		}
+		],
+		"testMeasure": [
+				{
+					"metricName":"btd",
+					"value":[
+								
+								{
+										"@type": "Indicator",
+										"name":"Operational State",
+										"value": "Up"
+			
+								},
+								{
+										"@type": "Indicator",
+										"name":"Last Change Time",
+										"value": "26 days, 00:21:12.00 (hr:min:sec)"
+								}
+							]
+							
+					
+				}
+				]
+		}
+	}
+Working
+
+1b . Inprogress
+
+{
+    "eventId": "8fdd5807-7d6c-4203-aa8e-2468eecfb3e1",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T05:24:57Z",
+    "event": {
+        "id": "WRI600000002601",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "InProgress",
+        "notificationType": "TestInProgress",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035663",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000001011",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-08T05:24:55Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "BTD Status",
+                    "status": "InProgress"
+                }
+            ]
+        }
+    }
+}
+op
+{
+  "eventId" : "8fdd5807-7d6c-4203-aa8e-2468eecfb3e1",
+  "eventType" : "ServiceTestStateChangeNotification",
+  "eventTime" : "2021-09-08T05:24:57Z",
+  "description" : "TestInProgress",
+  "event" : {
+    "id" : "WRI600000002601",
+    "state" : "InProgress",
+    "name" : "BTD Status",
+    "relatedService" : {
+      "id" : "OVC000000035663",
+      "@type" : "OVC"
+    },
+    "startDateTime" : "2021-09-08T05:24:55Z",
+    "characteristic" : [ {
+      "name" : "externalId",
+      "value" : "ABC-123",
+      "valueType" : "string"
+    } ]
+  }
+}
+
+working
+2. LoopBack Success ip
+{
+    "eventId": "508d1e2f-c47c-48da-b698-1d0ee2f9e3fb",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:12:05Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+    "event": {
+        "id": "WRI600000000611",
+        "objectType": "ServiceTestEvent",
+        "externalId": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+        "status": "Completed",
+        "notificationType": "TestCompleted",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000000001",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000001016",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2024-07-18T04:17:21Z",
+                "endDateTime": "2024-07-18T04:20:21Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "Loopback Test",
+                    "status": "Completed",
+                    "result": "Passed",
+                    "testMeasure": [
+                        {
+                            "highCosProfile": {
+								"result":"Failed",
+								"profile":"HIGH",
+                                "measurements": [
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Sent",
+                                        "value": "1000",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Recieved",
+                                        "value": "900",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost",
+                                        "value": "100",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost Percentage",
+                                        "value": "10",
+										"unit":"%"
+                                    }
+                                ]
+                            },
+                             "mediumCosProfile": {
+								"result":"Failed",
+								"profile":"HIGH",
+                                "measurements": [
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Sent",
+                                        "value": "1000",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Recieved",
+                                        "value": "900",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost",
+                                        "value": "100",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost Percentage",
+                                        "value": "10",
+										"unit":"%"
+                                    }
+                                ]
+                            },
+							 "lowCosProfile": {
+								"result":"Failed",
+								"profile":"HIGH",
+                                "measurements": [
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Sent",
+                                        "value": "1000",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Recieved",
+                                        "value": "900",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost",
+                                        "value": "100",
+										"unit":"Packet"
+                                    },
+                                    {
+                                        "@type": "PacketAnalysis",
+                                        "id": "Lost Percentage",
+                                        "value": "10",
+										"unit":"%"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+
+op
+
+{
+	"eventId": "ad124141dqwd45456ij65",
+	"eventType": "ServiceTestStateChangeNotification",
+	"eventTime": "2024-07-18T15:17:51Z",
+	"description": "TestCompleted",
+	"eventNote": {
+		"code": "1",
+		"reason": "Success"
+	},
+	"event": {
+		"id": "WRI600000000611",
+		"state": "Completed",
+		"name":"Loopback Test",
+		"relatedService": {
+				"id": "OVC000000000001",
+				"@type": "OVC"
+			},
+		"startDateTime": "2024-07-18T04:17:21Z",
+		"endDateTime": "2024-07-18T04:20:21Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+		 "valueType": "string"
+		},
+		{
+		 "name": "test_result",
+		 "value": "Failed",
+		 "valueType": "string"
+		}
+		],
+		"testMeasure": [
+				{
+					"metricName":"highCosProfile",
+					"value":[
+								{
+								  "name": "result",
+								  "value": "Failed",
+								  "valueType": "string"
+								},
+								{
+								  "name": "profile",
+								  "value": "HIGH",
+								  "valueType": "string"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Sent",
+										"value": "1000",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Recieved",
+										"value": "900",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost",
+										"value": "100",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost Percentage",
+										"value": "10",
+										"valueType":"%"
+								}
+							]
+							
+					
+				},
+				{
+							"metricName":"mediumCosProfile",
+							"value":[
+								{
+								  "name": "result",
+								  "value": "Failed",
+								  "valueType": "string"
+								},
+								{
+								  "name": "profile",
+								  "value": "HIGH",
+								  "valueType": "string"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Sent",
+										"value": "1000",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Recieved",
+										"value": "900",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost",
+										"value": "100",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost Percentage",
+										"value": "10",
+										"valueType":"%"
+								}
+							
+							
+					]
+				},
+				{
+							"metricName":"lowCosProfile",
+							"value":[
+								{
+								  "name": "result",
+								  "value": "Failed",
+								  "valueType": "string"
+								},
+								{
+								  "name": "profile",
+								  "value": "HIGH",
+								  "valueType": "string"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Sent",
+										"value": "1000",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Recieved",
+										"value": "900",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost",
+										"value": "100",
+										"valueType":"Packet"
+								},
+								{
+										"@type": "PacketAnalysis",
+										"name":"Lost Percentage",
+										"value": "10",
+										"valueType":"%"
+								}
+							
+							
+					]
+				}
+			]
+		}
+	}
+working but issue with [
+
+2b. ip
+{
+    "eventId": "10602cc7-a2da-44f1-944c-598b0a9e3d75",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:12:03Z",
+    "event": {
+        "id": "WRI600000002608",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "InProgress",
+        "notificationType": "TestInProgress",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035914",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000002016",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-08T06:12:01Z"
+            },
+            "testParameters": {
+                "classOfService": [
+                    "HIGH",
+                    "MEDIUM",
+                    "LOW"
+                ],
+                "packetSize": 1024
+            },
+            "serviceTestResults": [
+                {
+                    "type": "Loopback Test",
+                    "status": "InProgress"
+                }
+            ]
+        }
+    }
+}
+op
+{
+	"eventId": "ad124141dqwd45456ij65",
+	"eventType": "ServiceTestStateChangeNotification",
+	"eventTime": "2024-07-18T15:17:51Z",
+	"description": "TestInProgress",
+	"event": {	
+		"id": "WRI600000000611",
+		"state": "InProgress",
+		"name":"Loopback Test",
+		"relatedService": {
+				"id": "OVC000000000001",
+				"@type": "OVC"
+			},
+		"startDateTime": "2024-07-18T04:17:21Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+		 "valueType": "string"
+		}
+		]
+	}
+}
+working
+2c. input
+{
+    "eventId": "508d1e2f-c47c-48da-b698-1d0ee2f9e3fb",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:12:05Z",
+    "eventNote": {
+        "code": "3",
+        "reason": "Cancelled"
+    },
+    "event": {
+        "id": "WRI600000002608",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "Cancelled",
+        "notificationType": "TestCancelled",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035914",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000002016",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-08T06:12:01Z",
+                "endDateTime": "2021-09-08T06:12:05Z"
+            },
+            "testParameters": {
+                "classOfService": [
+                    "HIGH",
+                    "MEDIUM",
+                    "LOW"
+                ],
+                "packetSize": 1024
+            },
+            "serviceTestResults": [
+                {
+                    "type": "Loopback Test",
+                    "status": "Cancelled",
+                    "errors": [
+                        {
+                            "code": "16000",
+                            "reason": "Network busy, please try again later. If problem persists contact nbn for assistance."
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+op
+{
+	"eventId": "ad124141dqwd45456ij65",
+	"eventType": "ServiceTestStateChangeNotification",
+	"eventTime": "2024-07-18T15:17:51Z",
+	"description": "TestCancelled",
+	"eventNote": {
+	     "code": "3",
+        "reason": "Cancelled"
+	},
+	"event": {
+		"id": "WRI600000000611",
+		"state": "Cancelled",
+		"name":"Loopback Test",
+		"relatedService": {
+				"id": "OVC000000000001",
+				"@type": "OVC"
+			},
+		"startDateTime": "2024-07-18T04:17:21Z",
+		"endDateTime": "2024-07-18T04:20:21Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+		 "valueType": "string"
+		},
+		{
+		 "name": "error_code",
+		 "value": "16000",
+		 "valueType": "string"
+		},
+		{
+		 "name": "error_reason",
+		 "value": "Network busy, please try again later. If problem persists contact nbn for assistance.",
+		 "valueType": "string"
+		}
+		]
+		}
+	}
+working but in output extra null is coming 
+3 input NPT Statistical
+{
+    "eventId": "508d1e2f-c47c-48da-b698-1d0ee2f9e3fb",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:12:05Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+    "event": {
+        "id": "WRI600000000611",
+        "objectType": "ServiceTestEvent",
+        "externalId": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+        "status": "Completed",
+        "notificationType": "TestCompleted",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000000001",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000001013",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2024-07-18T04:17:21Z",
+                "endDateTime": "2024-07-18T04:20:21Z"
+            },
+			"testParameters": {
+                "classOfService":"MEDIUM",
+				"startDateTime":"2024-07-18T04:17:21Z",
+				"endDateTime":"2024-07-18T04:20:21Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "NPT Statistical",
+                    "status": "Completed",
+                    "result": "Passed",
+					
+                    "testMeasure": [
+                        {
+							"serviceDetails": {
+                                "measurements": [
+                                    {
+                                        "id": "Low",
+                                        "value": "10",
+										"unit": "Mbps"
+                                    },
+                                    {
+                                        "id": "Medium",
+                                        "value": "20",
+										"unit": "Mbps"
+                                    },
+									{
+                                        "id": "High",
+                                        "value": "30",
+										"unit": "Mbps"
+                                    },
+									{
+                                        "id": "Route Type",
+                                        "value": "Local"
+                                    }
+                                ]
+                            },
+							"cosProfile": {
+                                "measurements": [
+                                    {
+                                        "id": "Frame Delay Status",
+                                        "value": "Green"
+										
+                                    },
+                                    {
+                                        "id": "Frame Loss Status",
+                                        "value": "Green"
+                                    },
+									{
+                                        "id": "Jitter Status",
+                                        "value": "Green"
+                                    }
+                                ]
+                            }
+							
+                }
+            ]
+        }
+    ]
+    }
+}
+}
+
+op
+{
+	"eventId": "508d1e2f-c47c-48da-b698-1d0ee2f9e3fb",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:12:05Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+	"event": {
+		"id": "WRI600000000611",
+		"state": "Completed",
+		"name":"NPT Statistical",
+		"relatedService": {
+				"id": "OVC000000000001",
+				"@type": "OVC"
+			},
+		"testSpecification": {
+				"id": "TST000000001013",
+				"version": "1.0"
+			},
+		"startDateTime": "2024-07-18T04:17:21Z",
+		"endDateTime": "2024-07-18T04:20:21Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "OptusB2_OW_OWSNOW_3b7999d087eb4210fdcfa8e50cbb352f",
+		 "valueType": "string"
+		},
+		{
+		 "name": "Test_result",
+		 "value": "Passed",
+		 "valueType": "string"
+		}
+		],
+		"testMeasure": [
+				{
+					"metricName":"serviceDetails",
+					"value":[
+								
+								{
+										
+										"name":"Low",
+										"value": "10",
+										"valueType":"Mbps"
+								},
+								{
+										
+										"name":"Medium",
+										"value": "20",
+										"valueType":"Mbps"
+								},
+								{
+										
+										"name":"High",
+										"value": "30",
+										"valueType":"Mbps"
+								},
+								{
+										
+										"name":"Route Type",
+										"value": "Local"
+								}
+							]
+							
+					
+				},
+				{
+							"metricName":"cosProfile",
+							"value":[
+								
+								{
+										
+										"name":"Frame Delay Status",
+										"value": "Green"
+								},
+								{
+										"name":"Frame Loss Status",
+										"value": "Green"
+								},
+								{
+										"name":"Jitter Status",
+										"value": "Green"
+								}
+							
+							
+					]
+				}
+			]
+		}
+	}
+
+working as expected
+
+4. input UNI-E Port Reset"
+{
+    "eventId": "f73fcd98-e59c-4765-b9c6-bea38b17859e",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:20:09Z",
+    "eventNote": {
+        "code": "1",
+        "reason": "Success"
+    },
+    "event": {
+        "id": "WRI600000002609",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "Completed",
+        "notificationType": "TestCompleted",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035663",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000002015",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-08T06:19:52Z",
+                "endDateTime": "2021-09-08T06:20:09Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "UNI-E Port Reset",
+                    "status": "Completed",
+                    "result": "Passed"
+                }
+            ]
+        }
+    }
+}
+
+op
+{
+	"eventId": "f73fcd98-e59c-4765-b9c6-bea38b17859e",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-08T06:20:09Z",
+	"description": "TestCompleted",
+	"eventNote": {
+		"code": "1",
+		"reason": "Success"
+	},
+	"event": {
+		"id": "WRI600000002609",
+		"state": "Completed",
+		"name":"UNI-E Port Reset",
+		"relatedService": {
+				"id": "OVC000000035663",
+				"@type": "OVC"
+			},
+		"startDateTime": "2021-09-08T06:19:52Z",
+        "endDateTime": "2021-09-08T06:20:09Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "ABC-123",
+		 "valueType": "string"
+		},
+		{
+		 "name": "Test_result",
+		 "value": "Passed",
+		 "valueType": "string"
+		}
+		]
+		}
+	}
+
+working
+
+5.ip UNI-E Status
+{
+    "eventId": "2fac98e6-86ec-4df8-b6eb-5f8c5d889685",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-09T05:01:34Z",
+    "eventNote": {
+        "code": "2",
+        "reason": "Failed"
+    },
+    "event": {
+        "id": "WRI600000002641",
+        "objectType": "ServiceTestEvent",
+        "externalId": "ABC-123",
+        "status": "Completed",
+        "notificationType": "TestCompleted",
+        "serviceTest": {
+            "serviceRef": {
+                "id": "OVC000000035914",
+                "type": "OVC"
+            },
+            "testSpecificationRef": {
+                "id": "TST000000001012",
+                "version": "1.0"
+            },
+            "executionDate": {
+                "startDateTime": "2021-09-09T05:01:17Z",
+                "endDateTime": "2021-09-09T05:01:34Z"
+            },
+            "serviceTestResults": [
+                {
+                    "type": "UNI-E Status",
+                    "status": "Completed",
+                    "result": "Failed",
+                    "testMeasure": [
+                        {
+                            "port": {
+                                "measurements": [
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Admin State",
+                                        "value": "up"
+                                    },
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Operational State",
+                                        "value": "down"
+                                    },
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Link State",
+                                        "value": "No"
+                                    },
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Last State Change Date",
+                                        "value": "08/13/2021 11:29:40"
+                                    },
+                                    {
+                                        "@type": "Indicator",
+                                        "id": "Port Type",
+                                        "value": ""
+                                    }
+                                ]
+                            },
+                            "performance": {
+                                "measurements": [
+                                    {
+                                        "@type": "PerformanceIndicator",
+                                        "id": "Operational Speed",
+                                        "unit": "Gbps",
+                                        "value": "N/A"
+                                    },
+                                    {
+                                        "@type": "PerformanceIndicator",
+                                        "id": "Config Speed",
+                                        "unit": "Gbps",
+                                        "value": "1 Gbps"
+                                    },
+                                    {
+                                        "@type": "PerformanceIndicator",
+                                        "id": "Operational Duplex",
+                                        "value": "N/A"
+                                    },
+                                    {
+                                        "@type": "PerformanceIndicator",
+                                        "id": "Config Duplex",
+                                        "value": "full"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "errors": [
+                        {
+                            "code": "CO210",
+                            "reason": "No Ethernet carrier detected. Please check CPE connectivity to the NTD."
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+
+op
+{
+	 "eventId": "2fac98e6-86ec-4df8-b6eb-5f8c5d889685",
+    "eventType": "ServiceTestStateChangeNotification",
+    "eventTime": "2021-09-09T05:01:34Z",
+    "eventNote": {
+        "code": "2",
+        "reason": "Failed"
+    },
+	"event": {
+		"id": "WRI600000002641",
+		"state": "Completed",
+		"name":"UNI-E Status",
+		"relatedService": {
+				"id": "OVC000000035914",
+				"@type": "OVC"
+			},
+		"testSpecification": {
+				"id": "TST000000002016",
+				"version": "1.0"
+			},
+		"startDateTime": "2021-09-09T05:01:17Z",
+        "endDateTime": "2021-09-09T05:01:34Z",
+		"characteristic":[
+		{
+		 "name": "externalId",
+		 "value": "ABC-123",
+		 "valueType": "string"
+		},
+		{
+		 "name": "Test_result",
+		 "value": "Failed",
+		 "valueType": "string"
+		},
+		{
+		 "name": "error_code",
+		 "value": "CO210",
+		 "valueType": "string"
+		},
+		{
+		 "name": "error_reason",
+		 "value": "No Ethernet carrier detected. Please check CPE connectivity to the NTD.",
+		 "valueType": "string"
+		}
+		],
+		"testMeasure": [
+				{
+					"metricName":"port",
+					"value":[
+								
+								{
+										"@type": "Indicator",
+										"name":"Admin State",
+										"value": "up"
+										
+								},
+								{
+										"@type": "Indicator",
+										"name":"Operational State",
+										"value": "down"
+								},
+								{
+										"@type": "Indicator",
+										"name":"Link State",
+										"value": "No"
+								},
+								{
+										"@type": "Indicator",
+										"name":"Last State Change Date",
+										"value": "08/13/2021 11:29:40"
+								},
+								{
+										"@type": "Indicator",
+										"name":"Port Type",
+										"value": ""
+								}
+							]
+							
+					
+				},
+				{
+							"metricName":"performance",
+							"value":[
+								
+								{
+										"@type": "PerformanceIndicator",
+										"name":"Operational Speed",
+										"value": "N/A",
+										"valueType":"Gbps"
+								},
+								{
+										"@type": "PerformanceIndicator",
+										"name":"Config Speed",
+										"value": "1 Gbps",
+										"valueType":"Gbps"
+								},
+								{
+										"@type": "PerformanceIndicator",
+										"name":"Operational Duplex",
+										"value": "N/A"
+										
+								},
+								{
+										"@type": "PerformanceIndicator",
+										"name":"Config Duplex",
+										"value": "full"
+					
+								}
+							
+							
+					]
+				}
+			]
+		}
+	}
+working as expected
+
