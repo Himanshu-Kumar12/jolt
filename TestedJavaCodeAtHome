@@ -1,3 +1,18 @@
+import com.bazaarvoice.jolt.Chainr;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.camunda.zeebe.client.api.response.ActivatedJob;
+import io.camunda.zeebe.client.api.worker.JobClient;
+
+import io.camunda.zeebe.spring.client.annotation.ZeebeWorker;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+private final ObjectMapper mapper = new ObjectMapper();
+
+    @ZeebeWorker(type = "jolt-transform", autoComplete = true)
+    public void handle(final JobClient client, final ActivatedJob job) throws Exception {
+        Map<String, Object> variables = job.getVariablesAsMap();
 Object inputJsonObj =variables;
         JsonNode inputJsonNode;
         if (inputJsonObj instanceof String) {
@@ -17,3 +32,4 @@ Object inputJsonObj =variables;
                 .variables(Map.of("outputJson", transformedJsonNode))
                 .send()
                 .join();
+}
