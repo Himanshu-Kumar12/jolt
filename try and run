@@ -41,3 +41,12 @@ joltspec
     }
   }
 ]
+
+op
+{
+  "Name" : {
+    "desc" : "blabla1",
+    "num" : 40,
+    "@date" : "=@(2,\\@date)"
+  }
+}
