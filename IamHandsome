@@ -1,0 +1,9 @@
+Hi [Recipient's Name],
+
+The Camunda worker EKS node group is currently not authorized to retrieve the secret for resource ren/rengnp.
+
+I'm running tests in the gnp1 environment at the moment and encountered this issue.
+
+Could you please help grant the necessary permissions for secretsmanager:GetSecretValue on this secret?
+
+Thank you,
