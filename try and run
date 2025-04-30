@@ -1,0 +1,43 @@
+input
+{
+  "BVjsoBHDSI": [
+    {
+      "@date": "2021-04-08",
+      "description": "blabla1",
+      "number": 40
+    }
+  ]
+}
+joltspec
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "BVjsoBHDSI": {
+        "*": {
+          "description": "Name.desc",
+          "number": "Name.num"
+        }
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "Name": {
+        "@date": "=@(2,\\@date)",
+        "desc": "=@(2,BVjsoBHDSI.description)",
+        "num": "=get('number')"
+      }
+    }
+  },
+  {
+    "operation": "remove",
+    "spec": {
+      "Name": {
+        "description": "",
+        "number": ""
+      }
+    }
+  }
+]
