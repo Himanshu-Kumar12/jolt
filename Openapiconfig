@@ -1,0 +1,15 @@
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("User Test Management")
+                        .description("User Service Test Management\n\n### Release : 20.0 - April 2020\n\nService Test Management API goal is to provide the ability to manage tests of provisioned Services.")
+                        .version("4.2.0"))
+                .addTagsItem(new Tag().name("all"))
+                .addTagsItem(new Tag().name("serviceTest"));
+
+    }
+}
