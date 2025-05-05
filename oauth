@@ -1,0 +1,21 @@
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/sdpoauth/v1")
+public class OAuthController {
+
+    @PostMapping("/accesstoken")
+    @Operation(
+        summary = "Get Access Token",
+        description = "Retrieve an OAuth access token using the client credentials grant type."
+    )
+    public ResponseEntity<Response> getAccessToken(
+        @RequestParam("grant_type") @Parameter(description = "Grant type for OAuth token", required = true) String grantType
+    ) {
+        // Logic to handle token request
+        Response response = new Response("Bearer", "some_token", "3600");
+        return ResponseEntity.ok(response);
+    }
+}
