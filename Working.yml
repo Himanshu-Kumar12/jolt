@@ -1,0 +1,159 @@
+## src/main/resources/application.yml
+#
+#spring:
+#  application:
+#    name: demo
+#  datasource:
+#    url: jdbc:mysql://localhost:3307/demoss?useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+##  openapi:
+##    info:
+##      title: User API
+##      description: API for managing users.
+##      version: 1.0.0
+##    host: serverRoot
+##    servers:
+##      - url: https://serverRoot/tmf-api/serviceTestManagement/v4
+#swagger: "2.0"
+#info:
+#  title: "Service Test Management"
+#  description: |
+#    ## TMF API Reference: TMF653 - Service Test Management
+#
+#    ### Release : 20.0 - April 2020
+#
+#    Service Test Management API goal is to provide the ability to manage tests of provisioned Services.
+#
+#    ### Resource
+#    - ServiceTest
+#    - ServiceTestSpecification
+#
+#    ### Operations
+#    Service Test Management API performs the following operations on the resources :
+#    - Retrieve an entity or a collection of entities depending on filter criteria
+#    - Partial update of an entity (including updating rules)
+#    - Create an entity (including default values and creation rules)
+#    - Delete an entity (for administration purposes)
+#    - Manage notification of events
+#  version: "4.2.0"
+#host: "serverRoot"
+#basePath: "/tmf-api/serviceTestManagement/v4/"
+#schemes:
+#  - "https"
+#consumes:
+#  - "application/json;charset=utf-8"
+#produces:
+#  - "application/json;charset=utf-8"
+#tags:
+#  - name: "serviceTest"
+#  - name: "serviceTestSpecification"
+#  - name: "notification listeners (client side)"
+#  - name: "events subscription"
+#paths:
+## Add paths to define endpoints here
+#
+#springdoc:
+#  api-docs:
+#    path: /v3/api-docs
+#    show-extensions: true
+#    with-credentials: true
+#  swagger-ui:
+#    path: /swagger-ui.html
+#    show-extensions: true
+#    with-credentials: true
+#  info:
+#    title: Usr Test Management
+#    version: 4.2.0
+#  server:
+#    host: serverRoot
+#    base-path: /tmf-api/serviceTestManagement/v4/
+#
+#server:
+#  port: 9999
+
+
+
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://localhost:3307/demoss?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 9999
+
+# --- OpenAPI 3.x configuration (springdoc-openapi) ---
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    show-extensions: true
+    with-credentials: true
+  swagger-ui:
+    path: /swagger-ui.html
+    show-extensions: true
+    with-credentials: true
+  default-produces-media-type: application/json;charset=utf-8
+  default-consumes-media-type: application/json;charset=utf-8
+  info:
+    title: User Test Management
+    description: |
+      User Service Test Management
+
+      ### Release : 20.0 - April 2020
+
+      Service Test Management API goal is to provide the ability to manage tests of provisioned Services.
+    version: 4.2.0
+  servers:
+    - url: https://serverRoot/tmf-api/serviceTestManagement/v4
+
+# --- OPTIONAL: Swagger 2.0-style block below (ignored by springdoc, useful for docs/reference only) ---
+#swagger: "2.0"
+#info:
+#  title: "Service Test Management"
+#  description: |
+#    ## TMF API Reference: TMF653 - Service Test Management
+#
+#    ### Release : 20.0 - April 2020
+#
+#    Service Test Management API goal is to provide the ability to manage tests of provisioned Services.
+#
+#    ### Resource
+#    - ServiceTest
+#    - ServiceTestSpecification
+#
+#    ### Operations
+#    Service Test Management API performs the following operations on the resources :
+#    - Retrieve an entity or a collection of entities depending on filter criteria
+#    - Partial update of an entity (including updating rules)
+#    - Create an entity (including default values and creation rules)
+#    - Delete an entity (for administration purposes)
+#    - Manage notification of events
+#  version: "4.2.0"
+#host: "serverRoot"
+#basePath: "/tmf-api/serviceTestManagement/v4/"
+#schemes:
+#  - "https"
+#consumes:
+#  - "application/json;charset=utf-8"
+#produces:
+#  - "application/json;charset=utf-8"
+#tags:
+#  - name: "serviceTest"
+#  - name: "serviceTestSpecification"
+#  - name: "notification listeners (client side)"
+#  - name: "events subscription"
+#paths:
+#  # Add paths to define endpoints here
