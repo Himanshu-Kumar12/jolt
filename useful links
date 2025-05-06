@@ -15,3 +15,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
     }
 )
 
+
+ @Operation(summary = "Get users",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Success",
+                headers = {
+                    @Header(name = "X-Result-Count", description = "Actual number of items returned in the response body", schema = @io.swagger.v3.oas.annotations.media.Schema(type = "integer")),
+                    @Header(name = "X-Total-Count", description = "Total number of items matching criteria", schema = @io.swagger.v3.oas.annotations.media.Schema(type = "integer"))
+                }
+            )
+        }
+    )
