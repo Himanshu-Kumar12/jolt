@@ -6,3 +6,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+
+@Operation(
+    summary = "Get users",
+    parameters = {
+        @Parameter(name = "X-Correlation-ID", in = ParameterIn.HEADER, required = true, description = "Correlation ID"),
+        @Parameter(name = "X-Client-Version", in = ParameterIn.HEADER, required = false, description = "Client version")
+    }
+)
+
