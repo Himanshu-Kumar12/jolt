@@ -30,3 +30,44 @@ import io.swagger.v3.oas.annotations.media.Schema;
     )
 
 import io.swagger.v3.oas.annotations.headers.Header;
+
+@Operation(
+        summary = "Update an employee",
+        description = "Update an existing employee. The response is updated Employee object with id, first name, and last name.",
+        responses = {
+                @ApiResponse(
+                        responseCode = "200",
+                        description = "Success",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = User.class)
+                        ),
+                        headers = {
+                                @Header(
+                                        name = "X-Result-Count",
+                                        description = "Actual number of items returned in the response body",
+                                        schema = @Schema(type = "integer")
+                                ),
+                                @Header(
+                                        name = "X-Total-Count",
+                                        description = "Total number of items matching criteria",
+                                        schema = @Schema(type = "integer")
+                                )
+                        }
+                ),
+                @ApiResponse(
+                        responseCode = "404",
+                        description = "Employee not found",
+                        content = @Content(
+                                schema = @Schema(implementation = User.class)
+                        )
+                ),
+                @ApiResponse(
+                        responseCode = "500",
+                        description = "Internal Server Error",
+                        content = @Content(
+                                schema = @Schema(implementation = User.class)
+                        )
+                )
+        }
+)
