@@ -1,0 +1,77 @@
+joltSpec:
+  ipneJolt:
+    - operation: shift
+      spec:
+        eventId: eventId
+        eventType: eventType
+        eventTime: eventTime
+        description: notificationType
+        eventNote: eventNote
+        event:
+          id: event.id
+          status: event.state
+          serviceTest:
+            serviceTestResults:
+              "*":
+                result: event.characteristic[1].value
+                "#string": event.characteristic[1].valueType
+                "#test_result": event.characteristic[1].name
+                testMeasure:
+                  "*":
+                    "*":
+                      "$": event.testMeasure1[].metricName
+                      "*":
+                        "*":
+                          id: tmpNode.&3[&1].name
+                          value: tmpNode.&3[&1].value
+                          unit: tmpNode.&3[&1].valueType
+                          "\\@type": tmpNode.&3[&1].\\@type
+
+          externalId:
+            "#externalId": event.characteristic[0].name
+            "@(1,externalId)": event.characteristic[0].value
+            "#string": event.characteristic[0].valueType
+          serviceRef:
+            id: event.relatedService.id
+            type: event.relatedService.\\@type
+          testSpecificationRef:
+            id: event.testSpecification.id
+            version: event.testSpecification.version
+          executionDate:
+            startDateTime: event.startDateTime
+            endDateTime: event.endDateTime
+
+    - operation: shift
+      spec:
+        "@": ""
+        event:
+          testMeasure1:
+            "*":
+              metricName:
+                "*":
+                  "$": event.testMeasure[&3].metricName
+                  "@(5,tmpNode.&)": event.testMeasure[&3].value
+
+    - operation: remove
+      spec:
+        event:
+          testMeasure1: ""
+        tmpNode: ""
+
+  npisJolt:
+    - operation: shift
+      spec:
+        exampleField: mappedField
+
+
+
+
+ private List<Map<String, Object>> ipneJolt;
+    private List<Map<String, Object>> npisJolt;
+
+
+@Bean
+CommandLineRunner runner(JoltSpecProperties props) {
+    return args -> {
+props.getIpneJolt().size()-syso
+props.getIpneJolt().get(0).get("operation") syso
