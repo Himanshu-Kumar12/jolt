@@ -6,6 +6,27 @@
 			example = "tenantId=123"
 	)
 
+
+@Bean
+    public GroupedOpenApi itemApi(){
+        return
+                GroupedOpenApi.builder()
+                        .group("items").pathsToMatch("/api/items/**").build();
+    }
+
+    @Bean
+    public GroupedOpenApi adminApi(){
+     return
+             GroupedOpenApi.builder()
+             .group("admin").pathsToMatch("/api/admin/**").build();
+}
+
+
+
+
+
+
+
 https://www.geeksforgeeks.org/spring-boot-rest-api-documentation-using-swagger/
 https://bell-sw.com/blog/documenting-rest-api-with-swagger-in-spring-boot-3/#mcetoc_1heq9ft3o1k
 https://github.com/des-felins/spring-tips/tree/main
