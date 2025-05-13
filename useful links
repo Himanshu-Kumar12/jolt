@@ -1,5 +1,11 @@
 @Schema(description = "For posting the address")
 
+	@Schema(
+			description = "For posting the address. Default tenant is 123.",
+			defaultValue = "tenantId=123",
+			example = "tenantId=123"
+	)
+
 https://www.geeksforgeeks.org/spring-boot-rest-api-documentation-using-swagger/
 https://bell-sw.com/blog/documenting-rest-api-with-swagger-in-spring-boot-3/#mcetoc_1heq9ft3o1k
 https://github.com/des-felins/spring-tips/tree/main
