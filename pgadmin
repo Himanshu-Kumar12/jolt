@@ -1,0 +1,39 @@
+
+CREATE TABLE your_table_name1 (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION update_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;  -- Set the updated_at to the current timestamp
+    RETURN NEW;  -- Return the updated row
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_updated_at
+BEFORE UPDATE ON your_table_name1
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at();
+
+
+INSERT INTO your_table_name1 (name) VALUES ('First Entry');
+
+SELECT id, created_at, updated_at, name
+	FROM public.your_table_name1;
+	
+ id |         created_at         |         updated_at         |    name
+----+----------------------------+----------------------------+-------------
+  1 | 2025-03-31 14:02:21.042774 | 2025-03-31 14:02:21.042774 | First Entry	
+  
+   id |         created_at         |         updated_at         |   name
+----+----------------------------+----------------------------+----------
+  1 | 2025-03-31 14:02:21.042774 | 2025-03-31 14:05:38.444188 | Himanshu
+  
+  
+ UPDATE your_table_name1
+SET name = 'Himanshu'
+WHERE id = 1;
